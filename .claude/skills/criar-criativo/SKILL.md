@@ -12,6 +12,7 @@ Gera criativos visuais nos formatos 1:1 (feed) e 9:16 (story/reels) a partir do 
 
 - `GEMINI_API_KEY` definido em `.env` (raiz do projeto)
 - Arquivos `contexto/EMPRESA.md`, `contexto/VOZ.md`, `contexto/DESIGN.md` preenchidos
+- (Recomendado) logo da marca em `contexto/ativos/` — usado como referência de fidelidade
 - `jq` e `base64` disponíveis no shell (já vêm no macOS/Linux)
 
 ## Workflow
@@ -70,15 +71,19 @@ OUT_DIR="operacao/projetos/${SLUG}/criativos/${DATA}"
 mkdir -p "${OUT_DIR}"
 ```
 
-Depois rode o script duas vezes (1:1 + 9:16):
+Depois rode o script duas vezes (1:1 + 9:16). **Para fidelidade de marca, passe o logo da empresa (de `contexto/ativos/`) como 4º argumento** — o Gemini usa como referência visual em vez de inventar um símbolo genérico:
 
 ```bash
-./.claude/skills/criar-criativo/scripts/gen_image.sh \
-  "<prompt aprovado>" "1:1" "${OUT_DIR}/conceito-N_1x1.png"
+LOGO="contexto/ativos/<logo-da-marca>.png"   # opcional, mas recomendado
 
 ./.claude/skills/criar-criativo/scripts/gen_image.sh \
-  "<prompt aprovado>" "9:16" "${OUT_DIR}/conceito-N_9x16.png"
+  "<prompt aprovado>" "1:1" "${OUT_DIR}/conceito-N_1x1.png" "$LOGO"
+
+./.claude/skills/criar-criativo/scripts/gen_image.sh \
+  "<prompt aprovado>" "9:16" "${OUT_DIR}/conceito-N_9x16.png" "$LOGO"
 ```
+
+> Sem o 4º argumento, o script funciona igual (só texto). Sempre use os HEX exatos do `contexto/DESIGN.md` no prompt e descreva o símbolo REAL da marca — nunca um placeholder genérico.
 
 ### Passo 6 — Mostrar
 
@@ -107,6 +112,7 @@ Pergunte: "Aprovado, ajustar ou refazer?"
 
 ## Notas operacionais
 
+- **Fidelidade de marca**: o Gemini APROXIMA cor, fonte e símbolo — não reproduz pixel-perfect. Para logo, tipografia e cor exatos, gere a ARTE/fundo aqui e finalize a peça no Canva (skill `criar-post`, com Brand Kit aplicado). Passar o logo da marca como referência (4º arg do script) aproxima muito o símbolo real e evita "placeholder genérico".
 - Cada imagem custa ~US$0,039 (Gemini 2.5 Flash Image, 1024×1024 padrão). 3 conceitos × 2 ratios = 6 imagens = US$0,234 por execução completa.
 - Watermark SynthID invisível é embedded automaticamente — não tente removê-lo.
 - Para mudar para Gemini 3.x (preview, melhor texto): edite `scripts/gen_image.sh` trocando o model ID.

@@ -8,14 +8,15 @@
 
 set -euo pipefail
 
-if [ "$#" -ne 3 ]; then
-  echo "Uso: $0 <prompt> <aspect_ratio> <output_path>" >&2
+if [ "$#" -lt 3 ] || [ "$#" -gt 4 ]; then
+  echo "Uso: $0 <prompt> <aspect_ratio> <output_path> [imagem_referencia]" >&2
   exit 1
 fi
 
 PROMPT="$1"
 RATIO="$2"
 OUT="$3"
+REF="${4:-}"   # opcional: logo/imagem de marca usada como referência de fidelidade
 
 # Carrega .env da raiz do projeto se existir
 ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
@@ -33,16 +34,37 @@ fi
 
 # Monta payload JSON com jq para evitar problemas de escape.
 # aspectRatio vai em generationConfig.imageConfig (forma GA do 2.5 Flash Image).
-PAYLOAD=$(jq -n \
-  --arg prompt "$PROMPT" \
-  --arg ratio "$RATIO" \
-  '{
-    contents: [{parts: [{text: $prompt}]}],
-    generationConfig: {
-      responseModalities: ["IMAGE"],
-      imageConfig: {aspectRatio: $ratio}
-    }
-  }')
+# Se houver imagem de referência (4º arg), ela entra como inline_data no início
+# das parts — o Gemini usa de base pra manter fidelidade de marca (logo, símbolo, paleta)
+# em vez de inventar um genérico.
+if [ -n "$REF" ] && [ -f "$REF" ]; then
+  REF_MIME=$(file -b --mime-type "$REF")
+  REF_B64=$(base64 < "$REF" | tr -d '\n')
+  PAYLOAD=$(jq -n \
+    --arg prompt "$PROMPT" --arg ratio "$RATIO" \
+    --arg mime "$REF_MIME" --arg img "$REF_B64" \
+    '{
+      contents: [{parts: [
+        {inline_data: {mime_type: $mime, data: $img}},
+        {text: $prompt}
+      ]}],
+      generationConfig: {
+        responseModalities: ["IMAGE"],
+        imageConfig: {aspectRatio: $ratio}
+      }
+    }')
+else
+  PAYLOAD=$(jq -n \
+    --arg prompt "$PROMPT" \
+    --arg ratio "$RATIO" \
+    '{
+      contents: [{parts: [{text: $prompt}]}],
+      generationConfig: {
+        responseModalities: ["IMAGE"],
+        imageConfig: {aspectRatio: $ratio}
+      }
+    }')
+fi
 
 # Chama API e extrai imagem
 RESPONSE=$(curl -sS -X POST \
