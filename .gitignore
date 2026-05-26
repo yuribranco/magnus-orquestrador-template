@@ -1,0 +1,10 @@
+.env
+.env.local
+.claude/settings.local.json
+operacao/projetos/*/criativos/
+operacao/posts/*/canva-cache/
+node_modules/
+.DS_Store
+*.log
+*.pyc
+__pycache__/

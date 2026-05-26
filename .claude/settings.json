@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl https://generativelanguage.googleapis.com/*)",
+      "Bash(jq:*)",
+      "Bash(mkdir -p operacao/*)",
+      "Bash(date:*)",
+      "Bash(./.claude/skills/criar-criativo/scripts/gen_image.sh:*)",
+      "Read",
+      "Write",
+      "Glob",
+      "Grep"
+    ]
+  }
+}
