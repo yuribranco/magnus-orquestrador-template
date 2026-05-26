@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<!--
+  TEMPLATE DE CRIATIVO (HTML render, pixel-perfect).
+  O skill criar-criativo preenche os valores a partir de contexto/DESIGN.md:
+    - Fontes: troque FONT_DISPLAY / FONT_LABEL / FONT_BODY pelos nomes do Google Fonts
+      (formato do @import, ex: Cormorant+Garamond:ital,wght@0,600;1,600) e pelos nomes
+      simples nas regras CSS (ex: 'Cormorant Garamond').
+    - Cores: troque os HEX em :root pelos do DESIGN.md.
+    - LOGO_PATH: caminho ABSOLUTO do logo em contexto/ativos/ (o logo aparece sem recolorir,
+      então use fundo claro — ou prepare uma versão clara do logo pra fundo escuro).
+    - Textos: EYEBROW, HEADLINE, KEYWORD (palavra em itálico de acento), TAGLINE.
+    - Formato: height = 1080 (1:1) ou 1920 (9:16). Ajuste tamanhos se precisar.
+  Render: scripts/render_html.sh este.html saida.png 1080 1080   (e 1080 1920 pro 9:16)
+-->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=FONT_DISPLAY&family=FONT_LABEL&family=FONT_BODY&display=swap');
+:root{
+  --bg:      #FFFFFF;  /* DESIGN.md: fundo (claro, pra proporção e pro logo aparecer) */
+  --primary: #111111;  /* DESIGN.md: texto principal / cor da marca */
+  --accent:  #B59555;  /* DESIGN.md: acento (palavra em itálico, régua) */
+  --muted:   #667066;  /* DESIGN.md: secundário (eyebrow) */
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html,body{ width:1080px; height:1080px; }  /* 9:16 → height:1920px */
+body{ background:var(--bg); color:var(--primary); font-family:'FONT_BODY',sans-serif; overflow:hidden; }
+.wrap{ width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:space-between; text-align:center; padding:96px 110px; }
+.brand{ display:flex; flex-direction:column; align-items:center; }
+.logo{ width:212px; height:auto; display:block; }
+.eyebrow{ font-family:'FONT_LABEL',sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:.24em; font-size:18px; color:var(--muted); margin-top:30px; }
+.headline{ font-family:'FONT_DISPLAY',serif; font-weight:600; font-size:92px; line-height:1.04; letter-spacing:-.01em; color:var(--primary); }
+.headline em{ font-style:italic; color:var(--accent); }
+.foot{ display:flex; flex-direction:column; align-items:center; }
+.rule{ width:64px; height:2px; background:var(--accent); margin-bottom:28px; }
+.tagline{ font-family:'FONT_DISPLAY',serif; font-style:italic; font-size:30px; color:var(--accent); }
+.tagline-sub{ font-family:'FONT_LABEL',sans-serif; text-transform:uppercase; letter-spacing:.3em; font-size:13px; color:var(--muted); margin-top:12px; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="brand">
+      <img class="logo" src="LOGO_PATH" alt="ALT_DA_MARCA">
+      <div class="eyebrow">EYEBROW</div>
+    </div>
+    <h1 class="headline">HEADLINE <em>KEYWORD.</em></h1>
+    <div class="foot">
+      <div class="rule"></div>
+      <div class="tagline">TAGLINE</div>
+      <div class="tagline-sub">TAGLINE_SECUNDARIA</div>
+    </div>
+  </div>
+</body>
+</html>

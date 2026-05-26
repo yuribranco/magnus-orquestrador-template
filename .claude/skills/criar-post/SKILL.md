@@ -60,14 +60,14 @@ Gere um design brief textual:
 **Plataforma**: <ex: Instagram feed>
 
 **Brand Kit a usar (nomes de contexto/DESIGN.md)**:
-- Cor de fundo: <referência do Brand Kit, ex: "Vigilia Navy">
+- Cor de fundo: <referência do Brand Kit, ex: "Azul Marca">
 - Cor de texto principal: <referência>
 - Cor de destaque: <referência>
 - Fonte do headline: <referência>
 - Fonte do body: <referência>
 
 **Layout (hierarquia)**:
-1. <ex: "Logo Vigilia em branco no canto superior esquerdo, escala pequena">
+1. <ex: "Logo da marca em branco no canto superior esquerdo, escala pequena">
 2. <ex: "Headline ocupa 50% da altura, centro vertical, texto em branco">
 3. <ex: "Subhead abaixo, 1/4 do tamanho do headline">
 4. <ex: "CTA em barra inferior com cor de destaque">
