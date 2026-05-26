@@ -92,6 +92,4 @@ operacao/      → o que sua empresa produz (output)
 
 ## Suporte
 
-Mentoria Magnus: <link da mentoria>
-
 Issues técnicas no template: https://github.com/yuribranco/magnus-orquestrador-template
