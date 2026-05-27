@@ -66,17 +66,24 @@ Coloque logos, fontes e fotos em `contexto/ativos/`.
 
 Entre em https://canva.com/brand e cadastre cores, fontes e logo. Documente os nomes no `contexto/DESIGN.md` para o Claude referenciar.
 
-### 7. Use
+### 7. Crie sua primeira iniciativa
 
-Em qualquer sessão Claude Code dentro do projeto:
+Cada **iniciativa** (campanha, funil, lançamento) vive numa pasta própria em `operacao/<slug>/` com um `BRIEFING.md` (oferta, avatar, ângulo). Sua empresa — voz e design — fica em `contexto/`, **compartilhada por todas**. Você roda quantas iniciativas quiser em paralelo (ex: um low-ticket E um lançamento).
+
+Crie, por exemplo, `operacao/lancamento-q1/BRIEFING.md` com a oferta, o avatar e o ângulo.
+
+### 8. Use
+
+Em qualquer sessão Claude Code dentro do projeto, fale em linguagem natural:
 
 ```
-> quero criar um criativo de anúncio sobre [tema]
+> quero criar um criativo de anúncio pra [iniciativa] sobre [tema]
+> quero criar a landing page de [iniciativa]
 > me ajuda a fazer um carrossel sobre [tema] pra LinkedIn
 > vou lançar [produto] em [data], me ajuda a estruturar
 ```
 
-O skill correto ativa sozinho.
+O skill correto ativa sozinho e salva em `operacao/<iniciativa>/`.
 
 ## Trocar Notion por outro gerenciador
 
@@ -85,9 +92,9 @@ Edite `.mcp.json`. Troque a URL `notion` pela do MCP da sua ferramenta (Linear, 
 ## Estrutura
 
 ```
-contexto/      → o que sua empresa é (preencha)
-.claude/       → o que sua empresa faz (skills prontos)
-operacao/      → o que sua empresa produz (output)
+contexto/        → o que sua empresa É (voz, design, time — compartilhado)
+.claude/         → o que sua empresa FAZ (skills prontos)
+operacao/<slug>/ → cada iniciativa (campanha/lançamento) com seu BRIEFING.md + assets
 ```
 
 ## Suporte
