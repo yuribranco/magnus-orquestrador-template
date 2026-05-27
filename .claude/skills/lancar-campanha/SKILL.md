@@ -30,11 +30,11 @@ Carregue conforme necessário:
 
 Pergunte:
 
-1. **Slug** da campanha em kebab-case (ex: `magnus-q3-2026-aquecimento`)
+1. **Slug** da iniciativa/campanha em kebab-case (ex: `lancamento-q3-2026`)
 2. **Data de abertura** de carrinho ou launch principal (YYYY-MM-DD)
 3. **Data de fechamento** (YYYY-MM-DD)
 
-Crie `operacao/campanhas/<slug>/`.
+Crie `operacao/<slug>/`.
 
 ### Passo 2 — Entrevista Schwartz
 
@@ -68,7 +68,7 @@ Use `assets/BRIEF.template.md` como base. Sintetize as 10 respostas em:
 - Hipóteses críticas a testar (gere 3 baseadas nas respostas)
 - KPIs
 
-Salve em `operacao/campanhas/<slug>/BRIEF.md`. Mostre ao usuário. Espere aprovação.
+Salve em `operacao/<slug>/BRIEFING.md`. Mostre ao usuário. Espere aprovação.
 
 ### Passo 4 — CRONOGRAMA
 
@@ -84,7 +84,7 @@ Use `assets/CRONOGRAMA.template.md`. Calcule datas retroagindo da abertura:
 - D+5: Fechamento de carrinho
 - D+7: Pós-lançamento (depoimentos, próximos passos)
 
-Ajuste conforme a duração que o usuário definiu. Salve em `operacao/campanhas/<slug>/CRONOGRAMA.md`.
+Ajuste conforme a duração que o usuário definiu. Salve em `operacao/<slug>/CRONOGRAMA.md`.
 
 ### Passo 5 — TAREFAS
 
@@ -106,7 +106,7 @@ Para cada tarefa:
 - **Tipo** (categoria acima)
 - **Descrição curta** (1 linha)
 
-Salve em `operacao/campanhas/<slug>/TAREFAS.md`. Mostre resumo (contagem por categoria). Espere aprovação.
+Salve em `operacao/<slug>/TAREFAS.md`. Mostre resumo (contagem por categoria). Espere aprovação.
 
 ### Passo 6 — Notion
 
@@ -124,9 +124,9 @@ Se aprovado:
 
 ### Passo 7 — Documentação
 
-Salve `operacao/campanhas/<slug>/notion-url.txt` com o link da database.
+Salve `operacao/<slug>/notion-url.txt` com o link da database.
 
-Atualize `operacao/campanhas/<slug>/BRIEF.md` no final adicionando seção:
+Atualize `operacao/<slug>/BRIEFING.md` no final adicionando seção:
 
 ```markdown
 ## Status

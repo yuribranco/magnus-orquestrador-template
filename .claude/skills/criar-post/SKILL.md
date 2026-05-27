@@ -16,9 +16,9 @@ Cria post (copy + design) para redes sociais com Brand Kit do Canva aplicado.
 
 ## Workflow
 
-### Passo 1 — Contexto
+### Passo 1 — Iniciativa + contexto
 
-Carregue:
+Identifique a **iniciativa** (`operacao/<slug>/`): se nova, crie + `BRIEFING.md`; se existe, leia o `BRIEFING.md` dela. Carregue o brand:
 - `contexto/VOZ.md`
 - `contexto/DESIGN.md`
 - `contexto/EMPRESA.md` (se faltar contexto sobre produto/oferta)
@@ -99,8 +99,9 @@ Crie um design <formato> de <dimensões> para <plataforma>, aplicando meu Brand 
 
 ```bash
 DATA=$(date +%F)
-SLUG="<slug-do-post>"  # ex: anuncio-sucessao-li-2026-05-26
-DIR="operacao/posts/${DATA}/${SLUG}"
+INICIATIVA="<slug-da-iniciativa>"
+SLUG="<slug-do-post>"  # ex: anuncio-sucessao-li
+DIR="operacao/${INICIATIVA}/posts/${DATA}-${SLUG}"
 mkdir -p "$DIR"
 ```
 

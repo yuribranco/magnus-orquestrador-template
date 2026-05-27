@@ -1,6 +1,6 @@
 ---
 name: criar-criativo
-description: Cria criativos visuais (1:1 e 9:16) para campanhas e posts usando Gemini 2.5 Flash Image. Lê contexto da empresa, faz entrevista estruturada (objetivo, big idea, formato), gera 3 conceitos para aprovação humana, e renderiza imagens nos dois formatos. Salva em operacao/projetos/<slug>/criativos/<data>/. Use sempre que o usuário pedir "criar criativo", "gerar arte", "imagem para anúncio", "post visual", "criativo de tráfego", "arte pra campanha", "imagem pra rede social" ou similar.
+description: Cria criativos visuais (1:1 e 9:16) para campanhas e posts usando Gemini 2.5 Flash Image. Lê contexto da empresa, faz entrevista estruturada (objetivo, big idea, formato), gera 3 conceitos para aprovação humana, e renderiza imagens nos dois formatos. Salva em operacao/<iniciativa>/criativos/<data>/. Use sempre que o usuário pedir "criar criativo", "gerar arte", "imagem para anúncio", "post visual", "criativo de tráfego", "arte pra campanha", "imagem pra rede social" ou similar.
 allowed-tools: Bash(./.claude/skills/criar-criativo/scripts/gen_image.sh:*), Bash(./.claude/skills/criar-criativo/scripts/render_html.sh:*), Bash(mkdir -p *), Bash(date:*), Read, Write, Glob
 ---
 
@@ -26,13 +26,13 @@ Leia, nesta ordem:
 2. `contexto/VOZ.md`
 3. `contexto/DESIGN.md`
 
-### Passo 2 — Identificar projeto
+### Passo 2 — Identificar a iniciativa
 
-Pergunte: "Em qual projeto vamos trabalhar? (Se for novo, me dá o nome em kebab-case, ex: `aquecimento-q3-sucessao`)"
+Pergunte: "Em qual iniciativa vamos trabalhar? (ex: `low-ticket-ebook`, `lancamento-q3` — kebab-case)"
 
-Se for novo, crie `operacao/projetos/<slug>/` e um `BRIEF.md` mínimo dentro com objetivo + público.
+Se for nova, crie `operacao/<slug>/` e um `BRIEFING.md` mínimo dentro com oferta, avatar, awareness e ângulo.
 
-Se já existe, leia `operacao/projetos/<slug>/BRIEF.md` para entender o histórico antes de continuar.
+Se já existe, leia `operacao/<slug>/BRIEFING.md` para herdar o contexto da iniciativa (oferta, avatar, ângulo) antes de continuar.
 
 ### Passo 3 — Entrevista estruturada
 
@@ -67,8 +67,8 @@ Prepare a pasta de saída:
 
 ```bash
 DATA=$(date +%F)
-SLUG="<slug-do-projeto>"
-OUT_DIR="operacao/projetos/${SLUG}/criativos/${DATA}"
+SLUG="<slug-da-iniciativa>"
+OUT_DIR="operacao/${SLUG}/criativos/${DATA}"
 mkdir -p "${OUT_DIR}"
 ```
 

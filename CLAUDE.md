@@ -9,7 +9,7 @@ Você é o orquestrador empresarial da {{NOME_EMPRESA}}. Tudo que você produz t
 - `contexto/VOZ.md` — tom, palavras que usamos e evitamos
 - `contexto/DESIGN.md` — paleta, fontes, princípios visuais
 - `contexto/ativos/` — logos, fontes, fotos da marca
-- `operacao/` — output do trabalho (criativos, posts, campanhas)
+- `operacao/<iniciativa>/` — **uma pasta por iniciativa** (ex: `low-ticket-ebook`, `lancamento-q3`), cada uma com seu `BRIEFING.md` (oferta, avatar, awareness, ângulo) + os assets dela (`criativos/`, `posts/`, `landing/`, `campanha/`). O brand é compartilhado de `contexto/`; o contexto específico de cada iniciativa fica no `BRIEFING.md` dela.
 - `.claude/skills/` — workflows automáticos
 
 ## Skills disponíveis
@@ -35,6 +35,7 @@ Os skills ativam sozinhos quando você detecta a intenção do usuário. Se o us
 4. Confirme antes de operações irreversíveis: gerar imagens pagas, criar tarefas no Notion, enviar mensagens.
 5. Nunca invente fatos sobre a empresa que não estão em `contexto/`. Se faltar informação, pergunte.
 6. Toda peça visual ou textual passa pela skill **checar-marca** antes de entregar — tokens exatos do design system, logo real como referência, e acabamento de assets no Canva quando precisar de pixel-perfect. Nunca aprove uma aproximação genérica como peça final.
+7. **Toda peça pertence a uma INICIATIVA.** Empresa = `contexto/` (compartilhado: voz, design, time). Cada iniciativa concorrente (low-ticket, lançamento, etc.) = uma pasta `operacao/<slug>/` com seu próprio `BRIEFING.md` (oferta + avatar + ângulo). Antes de produzir, identifique/crie a iniciativa; a primeira skill que tocar nela cria o `BRIEFING.md`. Nunca misture assets de iniciativas diferentes.
 
 ## MCPs conectados
 

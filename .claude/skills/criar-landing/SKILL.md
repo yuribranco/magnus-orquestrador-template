@@ -22,8 +22,8 @@ Carregue os tokens exatos via `checar-marca`: paleta (HEX), tipografia, logo de 
 
 ## Workflow
 
-### Passo 1 — Contexto + oferta
-Leia `contexto/` (EMPRESA, VOZ, DESIGN, ativos). Pergunte UMA por vez: oferta/produto · público (stage of awareness) · promessa principal · preço/bônus/garantia · CTA principal · que prova existe (depoimentos?).
+### Passo 1 — Iniciativa + contexto + oferta
+Identifique a **iniciativa** (ex: `lancamento-q3`): se nova, crie `operacao/<slug>/` + `BRIEFING.md`; se existe, leia o `BRIEFING.md` dela. Leia `contexto/` (EMPRESA, VOZ, DESIGN, ativos — brand compartilhado). Pergunte UMA por vez: oferta/produto · público (stage of awareness) · promessa principal · preço/bônus/garantia · CTA principal · que prova existe (depoimentos?).
 
 ### Passo 2 — Copy por seção
 Estrutura modular (ajuste a extensão à awareness — baixa = long copy que educa a dor; alta = short copy):
@@ -37,7 +37,7 @@ Estrutura modular (ajuste a extensão à awareness — baixa = long copy que edu
 Apresente a copy. Espere aprovação antes de montar o HTML.
 
 ### Passo 3 — Montar o HTML
-Produza um `index.html` standalone em `operacao/projetos/<slug>/landing/`:
+Produza um `index.html` standalone em `operacao/<iniciativa>/landing/`:
 - CSS vars com os **HEX exatos** do DESIGN.md; **fontes Google Fonts** do trio da marca; **logo real** de `ativos/`.
 - Semântico, **mobile-first** responsivo, **uma única CTA primária** por viewport, whitespace generoso.
 - Sem dependências além de Google Fonts. Sem emoji, sem gradiente fora do design, respeitar a proporção cromática.
