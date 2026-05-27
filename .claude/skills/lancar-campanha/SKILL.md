@@ -30,7 +30,7 @@ Carregue conforme necessário:
 
 Pergunte:
 
-1. **Slug** da iniciativa/campanha em kebab-case (ex: `lancamento-q3-2026`)
+1. **Slug** da campanha em kebab-case (ex: `lancamento-q3-2026`)
 2. **Data de abertura** de carrinho ou launch principal (YYYY-MM-DD)
 3. **Data de fechamento** (YYYY-MM-DD)
 
